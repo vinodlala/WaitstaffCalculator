@@ -14,70 +14,80 @@ body {
     background-color: white;
 }
 
+.header {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 200%;
+    /*padding: 1em;*/
+}
+
 /*.header-column-left {*/
-    /*float: left;*/
-    /*width: 314px;*/
-    /*height: 210px;*/
+/*float: left;*/
+/*width: 314px;*/
+/*height: 210px;*/
 /*}*/
 
 /*.header-column-right {*/
-    /*float: right;*/
-    /*width: 634px;*/
-    /*height: 210px;*/
+/*float: right;*/
+/*width: 634px;*/
+/*height: 210px;*/
 /*}*/
 
-/*.inputs-column-left {*/
-    /*float: left;*/
-    /*width: 33%;*/
-/*}*/
+.inputs-column-left {
+    float: left;
+    width: 480px;
+}
 
 /*.inputs-column-center {*/
-    /*display: inline-block;*/
-    /*width: 33%;*/
+/*display: inline-block;*/
+/*width: 33%;*/
 /*}*/
 
-/*.inputs-column-right {*/
-    /*float: right;*/
-    /*width: 33%;*/
-/*}*/
+.inputs-column-right {
+    float: right;
+    width: 480px;
+}
 
-/*.clear {*/
-    /*clear: both;*/
-/*}*/
+.clear {
+    clear: both;
+}
 
 /*.center {*/
-    /*text-align: center;*/
+/*text-align: center;*/
 /*}*/
 
-/*.box {*/
-    /*border: 3px solid;*/
-/*}*/
+.box {
+    border: 3px solid;
+}
 
 /*.image {*/
-    /*vertical-align: middle;*/
+/*vertical-align: middle;*/
 /*}*/
 
 /*.input {*/
-    /*padding: 30px;*/
+/*padding: 30px;*/
 /*}*/
 
 /*.output {*/
-    /*padding: 30px;*/
+/*padding: 30px;*/
 /*}*/
 
 /*.user-input {*/
-    /*text-align: center;*/
+/*text-align: center;*/
 /*}*/
 
 /*.user-input-radio {*/
-    /*text-align: left;*/
+/*text-align: left;*/
 /*}*/
 
 /*.user-output {*/
-    /*text-decoration: underline;*/
+/*text-decoration: underline;*/
 /*}*/
 /*.automate {*/
-    /*font-size: xx-large;*/
+/*font-size: xx-large;*/
 /*}*/
 
 .error {

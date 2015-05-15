@@ -15,62 +15,64 @@
 <body ng-controller="MyCtrl">
 
 <div id="wrapper">
-    Waitstaff Calculator
+    <div class="header">Waitstaff Calculator</div>
+    <div class="clear"></div>
 
-    <div>
-        <div>Enter the Meal Details</div>
-        <form ng-submit="submit()" name="myForm" novalidate>
-            <div>Base Meal Price: $<input type="text" placeholder="Base Meal Price"
-                                          ng-model="baseMealPrice" name="baseMealPrice"
-                                          ng-pattern="/[-+]?[0-9]*\.?[0-9]+/" required></input>
+    <div class="inputs-column-left">
+        <div class="box">
+            <div><h1>Enter the Meal Details</h1></div>
+            <form ng-submit="submit()" name="myForm" novalidate>
+                <div>Base Meal Price: $<input type="text" placeholder="Base Meal Price"
+                                              ng-model="baseMealPrice" name="baseMealPrice"
+                                              ng-pattern="/[-+]?[0-9]*\.?[0-9]+/" required></input>
+                </div>
+                <div>Tax Percent: <input type="text" placeholder="Tax Percent"
+                                         ng-model="taxRatePercent" name="taxRatePercent"
+                                         ng-pattern="/[-+]?[0-9]*\.?[0-9]+/" required></input>%
+                </div>
+                <div>Tip Percent: <input type="text" placeholder="Tip Percent"
+                                         ng-model="tipPercent" name="tipPercent"
+                                         ng-pattern="/[-+]?[0-9]*\.?[0-9]+/" required></input>%
+                </div>
+                <div><input class="user-input" type="submit" id="submit" value="Submit"
+                            ng-disabled="myForm.$invalid"></input></div>
+                <div><input class="user-input" type="submit" id="cancel" value="Cancel"
+                            ng-click="cancel()"></input></div>
+
+            </form>
+            <div ng-if="myForm.$submitted" ng-messages="myForm.$error">
+                <span class="error" ng-message="required">All fields must be filled out.</span>
+                <span class="error" ng-message="number">Each field must be a number.</span>
             </div>
-            <div>Tax Rate Percentage: <input type="text" placeholder="Tax Rate Percent"
-                                             ng-model="taxRatePercent" name="taxRatePercent"
-                                             ng-pattern="/[-+]?[0-9]*\.?[0-9]+/" required></input>%
+
+            <div ng-if="myForm.baseMealPrice.$error.pattern" ng-messages="myForm.baseMealPrice.$error">
+                <span class="error" ng-message="pattern"><strong>The base meal price must be a number.</strong></span>
             </div>
-            <div>Tip Percentage: <input type="text" placeholder="Tax Rate Percent"
-                                        ng-model="tipPercent" name="tipPercent"
-                                        ng-pattern="/[-+]?[0-9]*\.?[0-9]+/" required></input>%
+
+            <div ng-if="myForm.taxRatePercent.$error.pattern" ng-messages="myForm.taxRatePercent.$error">
+                <span class="error" ng-message="pattern"><strong>The tax rate percent must be number.</strong></span>
             </div>
-            <div><input class="user-input" type="submit" id="submit" value="Submit"
-                        ng-disabled="myForm.$invalid"></input></div>
-            <div><input class="user-input" type="submit" id="cancel" value="Cancel"
-                        ng-click="cancel()"></input></div>
 
-        </form>
-        <div ng-if="myForm.$submitted" ng-messages="myForm.$error">
-            <span class="error" ng-message="required">All fields must be filled out.</span>
-            <span class="error" ng-message="number">Each field must be a number.</span>
-        </div>
-
-        <div ng-if="myForm.baseMealPrice.$error.pattern" ng-messages="myForm.baseMealPrice.$error">
-            <span class="error" ng-message="pattern"><strong>The base meal price must be a number.</strong></span>
-        </div>
-
-        <div ng-if="myForm.taxRatePercent.$error.pattern" ng-messages="myForm.taxRatePercent.$error">
-            <span class="error" ng-message="pattern"><strong>The tax rate percent must be number.</strong></span>
-        </div>
-
-        <div ng-if="myForm.tipPercent.$error.pattern" ng-messages="myForm.tipPercent.$error" class="errorMessage">
-            <span class="error" ng-message="pattern"><strong>The tip percent must be a number.</strong></span>
+            <div ng-if="myForm.tipPercent.$error.pattern" ng-messages="myForm.tipPercent.$error" class="errorMessage">
+                <span class="error" ng-message="pattern"><strong>The tip percent must be a number.</strong></span>
+            </div>
         </div>
 
     </div>
 
-    <div>
-        <div>Customer Charges</div>
-        <div>Subtotal (Base Meal Price + Tax): {{ baseMealPricePlusTax | currency }}</div>
-        <div>Tip (Subtotal x Tip Percentage): {{ baseMealTip | currency }}</div>
-        <div>Total (Subtotal + Tip): {{ baseMealTotal | currency }}</div>
-    </div>
+    <div class="inputs-column-right">
+        <div class="box">
+            <div><h1>Customer Charges</h1></div>
+            <div>Subtotal: {{ baseMealPricePlusTax | currency }}</div>
+            <div>Tip: {{ baseMealTip | currency }}</div>
+            <div>Total: {{ baseMealTotal | currency }}</div>
+        </div>
 
-    <div>
-        <div>My Earnings Info
-            <div>Tip Total {{ tipTotal | currency }}</div>
-            <div>Meal Count {{ mealCount }}</div>
+        <div class="box">
+            <div><h1>My Earnings Info</h1></div>
+            <div>Tip Total: {{ tipTotal | currency }}</div>
+            <div>Meal Count: {{ mealCount }}</div>
             <div>Average Tip per Meal: {{ averageTipPerMeal | currency }}</div>
-            tipPercent {{ tipPercent | number:2 }}
-            tipPercentTotal {{ tipPercentTotal | number:2 }}
             <div>Average Tip Percentage per Meal: {{ averageTipPercentagePerMeal | number:2 }}%</div>
         </div>
 
@@ -79,6 +81,7 @@
                    ng-click="reset()"></input>
         </div>
     </div>
+</div>
 
 </body>
 
