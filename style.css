@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+body {
+    background-color: white;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+#wrapper {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+/*.header-column-left {*/
+    /*float: left;*/
+    /*width: 314px;*/
+    /*height: 210px;*/
+/*}*/
+
+/*.header-column-right {*/
+    /*float: right;*/
+    /*width: 634px;*/
+    /*height: 210px;*/
+/*}*/
+
+/*.inputs-column-left {*/
+    /*float: left;*/
+    /*width: 33%;*/
+/*}*/
+
+/*.inputs-column-center {*/
+    /*display: inline-block;*/
+    /*width: 33%;*/
+/*}*/
+
+/*.inputs-column-right {*/
+    /*float: right;*/
+    /*width: 33%;*/
+/*}*/
+
+/*.clear {*/
+    /*clear: both;*/
+/*}*/
+
+/*.center {*/
+    /*text-align: center;*/
+/*}*/
+
+/*.box {*/
+    /*border: 3px solid;*/
+/*}*/
+
+/*.image {*/
+    /*vertical-align: middle;*/
+/*}*/
+
+/*.input {*/
+    /*padding: 30px;*/
+/*}*/
+
+/*.output {*/
+    /*padding: 30px;*/
+/*}*/
+
+/*.user-input {*/
+    /*text-align: center;*/
+/*}*/
+
+/*.user-input-radio {*/
+    /*text-align: left;*/
+/*}*/
+
+/*.user-output {*/
+    /*text-decoration: underline;*/
+/*}*/
+/*.automate {*/
+    /*font-size: xx-large;*/
+/*}*/
+
+.error {
+    color: red;
+    text-align: center;
+}
