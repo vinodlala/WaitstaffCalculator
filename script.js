@@ -1,5 +1,30 @@
-angular.module('myApp', ['ngMessages'])
-    .controller("MyCtrl", function ($scope) {
+angular.module('myApp', ['ngMessages', 'ngAnimate', 'ngRoute'])
+
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: './home.html',
+                controller: 'MyCtrl'
+            })
+            .when('/new-meal', {
+                templateUrl: './new-meal.html',
+                controller: 'MyCtrl'
+            })
+            .when('/my-earnings', {
+                templateUrl: './my-earnings.html',
+                controller: 'MyCtrl'
+            })
+            .when('/error', {
+                templateUrl: './error.html'
+            })
+            .otherwise('/error', {
+                templateUrl: './error.html'
+            });
+    })
+
+
+    //.controller("MyCtrl", function ($rootScope) {
+    .controller("MyCtrl", ['$rootScope', '$scope', function ($rootScope, $scope) {
 
         $scope.baseMealPrice = "";
         $scope.taxRatePercent = "";
@@ -9,13 +34,17 @@ angular.module('myApp', ['ngMessages'])
         $scope.baseMealTip = 0;
         $scope.baseMealTotal = 0;
 
-        $scope.tipTotal = 0;
-        $scope.mealCount = 0;
-        $scope.averageTipPerMeal = 0;
+        if (!$rootScope.earningsWasInitialized) {
 
-        $scope.tipPercentTotal = 0;
-        $scope.averageTipPercentagePerMeal = 0;
+            $rootScope.tipTotal = 0;
+            $rootScope.mealCount = 0;
+            $rootScope.averageTipPerMeal = 0;
 
+            $rootScope.tipPercentTotal = 0;
+            $rootScope.averageTipPercentagePerMeal = 0;
+
+            $rootScope.earningsWasInitialized = true;;
+        }
         $scope.cancel = function () {
             $scope.baseMealPrice = "";
             $scope.taxRatePercent = "";
@@ -34,15 +63,15 @@ angular.module('myApp', ['ngMessages'])
             $scope.baseMealTip = 0;
             $scope.baseMealTotal = 0;
 
-            $scope.tipTotal = 0;
-            $scope.mealCount = 0;
-            $scope.averageTipPerMeal = 0;
+            $rootScope.tipTotal = 0;
+            $rootScope.mealCount = 0;
+            $rootScope.averageTipPerMeal = 0;
             //
-            $scope.tipPercentTotal = 0;
-            $scope.averageTipPercentagePerMeal = 0;
+            $rootScope.tipPercentTotal = 0;
+            $rootScope.averageTipPercentagePerMeal = 0;
 
-            $scope.myForm.$setPristine();
-            $scope.myForm.$setUntouched();
+            //$scope.myForm.$setPristine();
+            //$scope.myForm.$setUntouched();
 
         };
 
@@ -52,12 +81,12 @@ angular.module('myApp', ['ngMessages'])
             $scope.baseMealTip = $scope.baseMealPricePlusTax * ($scope.tipPercent / 100);
             $scope.baseMealTotal = $scope.baseMealPricePlusTax + $scope.baseMealTip;
 
-            $scope.tipTotal = $scope.tipTotal + $scope.baseMealTip;
-            $scope.mealCount += 1;
-            $scope.averageTipPerMeal = $scope.tipTotal / $scope.mealCount;
+            $rootScope.tipTotal = $rootScope.tipTotal + $scope.baseMealTip;
+            $rootScope.mealCount += 1;
+            $rootScope.averageTipPerMeal = $rootScope.tipTotal / $rootScope.mealCount;
 
-            $scope.tipPercentTotal = parseFloat($scope.tipPercentTotal) + parseFloat($scope.tipPercent);
-            $scope.averageTipPercentagePerMeal = $scope.tipPercentTotal / $scope.mealCount;
+            $rootScope.tipPercentTotal = parseFloat($rootScope.tipPercentTotal) + parseFloat($scope.tipPercent);
+            $rootScope.averageTipPercentagePerMeal = $rootScope.tipPercentTotal / $rootScope.mealCount;
 
             $scope.myForm.$setPristine();
             $scope.myForm.$setUntouched();
@@ -71,4 +100,4 @@ angular.module('myApp', ['ngMessages'])
         };
 
         //$scope.reset();
-    });
+    }]);
