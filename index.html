@@ -15,7 +15,8 @@
     <script src="script.js"></script>
 </head>
 
-<body ng-controller="MyCtrl">
+<!--<body ng-controller="MyCtrl">-->
+<body ng-controller="MyCtrl" ng-class="{loading: isLoading}">
 
 <div id="wrapper">
     <div class="header">Waitstaff Calculator</div>
@@ -25,7 +26,12 @@
     <a href="#/new-meal">New Meal</a>
     <a href="#/my-earnings">My Earnings</a>
 
-    <div ng-view></div>
+    <!--<div ng-view></div>-->
+
+    <div class="animate-view-container">
+        <div ng-view class="animate-view"></div>
+    </div>
+
 </div>
 
 </body>

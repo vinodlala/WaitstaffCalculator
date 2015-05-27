@@ -23,6 +23,24 @@ angular.module('myApp', ['ngMessages', 'ngAnimate', 'ngRoute'])
     })
 
 
+// 2.1.5
+    .run(function($rootScope, $location, $timeout) {
+        $rootScope.$on('$routeChangeError', function() {
+            $location.path("/error");
+        });
+        $rootScope.$on('$routeChangeStart', function() {
+            $rootScope.isLoading = true;
+        });
+        $rootScope.$on('$routeChangeSuccess', function() {
+            $timeout(function() {
+                $rootScope.isLoading = false;
+            }, 1000);
+        });
+    })
+
+
+
+
     //.controller("MyCtrl", function ($rootScope) {
     .controller("MyCtrl", ['$rootScope', '$scope', function ($rootScope, $scope) {
 
